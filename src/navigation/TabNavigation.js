@@ -4,6 +4,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Messages from '../screens/Messages';
 import Feed from '../screens/Feed';
 import HomeScreen from '../screens/HomeScreen';
+import DrawerNavigator from './DrawerNavigator';
 
 const Tabs = createBottomTabNavigator();
 
@@ -17,6 +18,7 @@ const TabNavigation = () => {
         component={HomeScreen}
         initialParams={{itemId: 100, desc: 'Item 100'}} //default params
       ></Tabs.Screen>
+      <Tabs.Screen name="Drawer" component={DrawerNavigator}></Tabs.Screen>
     </Tabs.Navigator>
   );
 };
