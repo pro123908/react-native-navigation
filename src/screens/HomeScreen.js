@@ -16,7 +16,7 @@ const HomeScreen = ({navigation, route}) => {
   }, [navigation]);
   return (
     <View style={styles.container}>
-      <Text>Home Screen</Text>
+      <Text>Home ScreenX</Text>
       <Text>{route.params.itemId}</Text>
       <Text>{route.params.desc}</Text>
       <Text>Count : {count}</Text>
@@ -35,6 +35,17 @@ const HomeScreen = ({navigation, route}) => {
           //navigation.navigate("Home")
         }>
         <Text style={{color: '#fff', fontSize: 20}}>About Screen</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.navBtn}
+        onPress={
+          () => navigation.navigate('Modal')
+          // navigation.push("About")
+          // navigation.popToTop();
+          // navigation.goBack()
+          //navigation.navigate("Home")
+        }>
+        <Text style={{color: '#fff', fontSize: 20}}>Open Modal</Text>
       </TouchableOpacity>
     </View>
   );

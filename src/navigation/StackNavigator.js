@@ -1,10 +1,33 @@
 import React from 'react';
 import {View, Text, Button} from 'react-native';
 import {createStackNavigator, HeaderBackButton} from '@react-navigation/stack';
-import HomeScreen from '../HomeScreen';
-import AboutScreen from '../AboutScreen';
+import HomeScreen from '../screens/HomeScreen';
+import AboutScreen from '../screens/AboutScreen';
+import TabNavigation from './TabNavigation';
 
 const Stack = createStackNavigator();
+const RootStack = createStackNavigator();
+
+const RootStackNavigator = () => {
+  return (
+    <RootStack.Navigator>
+      <RootStack.Screen
+        name="Stack"
+        component={StackNavigator}></RootStack.Screen>
+      <RootStack.Screen
+        name="Modal"
+        component={ModalScreen}
+        options={{headerShown: false}}></RootStack.Screen>
+    </RootStack.Navigator>
+  );
+};
+
+const ModalScreen = ({navigation}) => (
+  <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+    <Text>ModalScreen</Text>
+    <Button title="Dismiss Modal" onPress={() => navigation.goBack()} />
+  </View>
+);
 
 const StackNavigator = () => {
   return (
@@ -22,7 +45,7 @@ const StackNavigator = () => {
     >
       <Stack.Screen
         name="Home"
-        component={HomeScreen}
+        component={TabNavigation}
         initialParams={{itemId: 100, desc: 'Item 100'}} //default params
       >
         {/* {() => (
@@ -62,4 +85,4 @@ const StackNavigator = () => {
   );
 };
 
-export default StackNavigator;
+export default RootStackNavigator;
